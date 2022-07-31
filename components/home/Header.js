@@ -18,6 +18,9 @@ const Header = () => {
           />
         </TouchableOpacity>
         <TouchableOpacity>
+          <View style={styles.unread}>
+            <Text style={styles.unreadtext}>2</Text>
+          </View>
           <Image
             source={{
               uri: "https://img.icons8.com/fluency/48/000000/test-account.png",
@@ -51,6 +54,20 @@ const styles = StyleSheet.create({
     alignitems: "center",
     flexDirection: "row",
     marginHorizontal: 10,
+  },
+  unread: {
+    backgroundColor: "#FF0000",
+    borderRadius: 10,
+    width: 25,
+    height: 18,
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 100,
+  },
+  unreadtext: {
+    color: "#fff",
+    fontWeight: "bold",
   },
 });
 
