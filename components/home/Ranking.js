@@ -1,4 +1,11 @@
-import { View, Text, ScrollView, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { USERS } from "../../data/users";
 
@@ -9,14 +16,19 @@ const Ranking = () => {
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {USERS.map((ranks, index) => {
           return (
-            <View key={index} style={{ alignItems: "center" }}>
-              <Image source={{ uri: ranks.image }} style={styles.ranksimages} />
-              <Text style={styles.ranktext}>
-                {ranks.users.length > 6
-                  ? ranks.users.slice(0, 6).toLowerCase() + "..."
-                  : ranks.users.toLowerCase()}
-              </Text>
-            </View>
+            <TouchableOpacity>
+              <View key={index} style={{ alignItems: "center" }}>
+                <Image
+                  source={{ uri: ranks.image }}
+                  style={styles.ranksimages}
+                />
+                <Text style={styles.ranktext}>
+                  {ranks.users.length > 6
+                    ? ranks.users.slice(0, 6).toLowerCase() + "..."
+                    : ranks.users.toLowerCase()}
+                </Text>
+              </View>
+            </TouchableOpacity>
           );
         })}
       </ScrollView>
