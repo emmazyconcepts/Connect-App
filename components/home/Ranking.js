@@ -55,10 +55,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
-  testing: {
-    color: "#fff",
-    textAlign: "center",
-  },
 });
 
 export default Ranking;

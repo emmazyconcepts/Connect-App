@@ -9,7 +9,9 @@ const Post = ({ post }) => {
       <Divider width={1} orientation="vertical" />
       <PostHeader post={post} />
       <PostImage post={post} />
-      <PostFooter />
+      <View style={{ marginHorizontal: 15, marginTop: 10 }}>
+        <PostFooter />
+      </View>
     </View>
   );
 };
@@ -55,14 +57,55 @@ const PostImage = ({ post }) => (
 const PostFooter = ({ post }) => <Icons />;
 
 const Icons = ({ post }) => (
-  <TouchableOpacity>
-    <Image
-      source={{
-        uri: "https://img.icons8.com/fluency/48/000000/filled-like.png",
+  <View
+    style={{
+      flexDirection: "row",
+    }}
+  >
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "33%",
       }}
-      style={{ color: "", marginRight: 10, width: 20, height: 20 }}
-    />
-  </TouchableOpacity>
+    >
+      <TouchableOpacity>
+        <Image
+          source={{
+            uri: "https://img.icons8.com/fluency/48/000000/filled-like.png",
+          }}
+          style={{ width: 33, height: 33 }}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Image
+          style={{ width: 33, height: 33 }}
+          source={{
+            uri: "https://img.icons8.com/sf-ultralight-filled/48/40C057/comments.png",
+          }}
+        />
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Image
+          source={{
+            uri: "https://img.icons8.com/windows/64/40C057/share.png",
+          }}
+          style={{ width: 33, height: 33 }}
+        />
+      </TouchableOpacity>
+    </View>
+
+    <View style={{ flex: 1, alignItems: "flex-end" }}>
+      <TouchableOpacity>
+        <Image
+          source={{
+            uri: "https://img.icons8.com/fluency/48/000000/filled-like.png",
+          }}
+          style={{ marginRight: 10, width: 33, height: 33 }}
+        />
+      </TouchableOpacity>
+    </View>
+  </View>
 );
 
 const styles = StyleSheet.create({
