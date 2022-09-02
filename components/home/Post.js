@@ -11,10 +11,39 @@ const Post = ({ post }) => {
       <PostImage post={post} />
       <View style={{ marginHorizontal: 15, marginTop: 10 }}>
         <PostFooter />
+        <Likes post={post} />
+        <Captions post={post} />
+        <Comments post={post} />
+        <CommentsSection post={post} />
       </View>
     </View>
   );
 };
+
+const Comments = ({ post }) => (
+  <View style={{ marginTop: 5 }}>
+    {!!post.comments.length && (
+      <Text style={{ color: "gray" }}>
+        View{post.comments.length > 1 ? " all " : ""}
+        {post.comments.length}
+        {[post.comments.length > 1 ? " comments" : " comment"]}
+      </Text>
+    )}
+  </View>
+);
+
+const CommentsSection = ({ post }) => (
+  <Text>
+    {post.comments.map((comment, index) => (
+      <View key={index} style={{}}>
+        <Text style={{ color: "white" }}>
+          <Text style={{ fontWeight: "bold" }}> {comment.user}</Text>s
+          {comment.text}
+        </Text>
+      </View>
+    ))}
+  </Text>
+);
 
 const PostHeader = ({ post }) => (
   <View
@@ -55,6 +84,25 @@ const PostImage = ({ post }) => (
 );
 
 const PostFooter = ({ post }) => <Icons />;
+
+const Likes = ({ post }) => (
+  <View style={{ marginTop: 4, flexDirection: "row" }}>
+    <Text style={{ color: "white", fontWeight: "700" }}>
+      {" "}
+      {post.likes.toLocaleString("en")} Likes
+    </Text>
+  </View>
+);
+
+const Captions = ({ post }) => (
+  <View style={{ marginTop: 5 }}>
+    <Text style={{ color: "white" }}>
+      {" "}
+      <Text style={{ fontWeight: "bold" }}> {post.user}</Text>
+      <Text> {post.caption}</Text>
+    </Text>
+  </View>
+);
 
 const Icons = ({ post }) => (
   <View
@@ -99,7 +147,7 @@ const Icons = ({ post }) => (
       <TouchableOpacity>
         <Image
           source={{
-            uri: "https://img.icons8.com/fluency/48/000000/filled-like.png",
+            uri: "https://img.icons8.com/ios-glyphs/30/40C057/filled-sent.png",
           }}
           style={{ marginRight: 10, width: 33, height: 33 }}
         />
